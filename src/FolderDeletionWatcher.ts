@@ -103,7 +103,7 @@ export class FolderDeletionWatcher {
         }
         this._startParent( parentPath, callback, sharedContext ); // Set up recursively to catch and parent changes
         DEBUG && console.log( "Setup: %j", path )
-        let watcher = FS.watch( parentPath, async ( event:FS.WatchEventType, affectedFile:string ) => {
+        let watcher = FS.watch( parentPath, async ( event:string, affectedFile:string ) => {
             if( event==="rename" && affectedFile===filename ) {
                 sharedContext!.resolve();
             }

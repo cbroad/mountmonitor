@@ -41,7 +41,7 @@ export type FileSystem = {
 export type FileSystemEvent = { filesystem: FileSystem, type: "mount"|"unmount" } | { filesystem: FileSystem, oldFilesystem: FileSystem, type: "rename" };
 
 let deletionWatchers: {[path:string]:FolderDeletionWatcher} = {};
-let intervalVar:NodeJS.Timeout|undefined = undefined;
+let intervalVar:NodeJS.Timer|undefined = undefined;
 let filesystemMap:{[key:string]:FileSystem} = {};
 
 class _MountMonitor extends EventEmitter {
